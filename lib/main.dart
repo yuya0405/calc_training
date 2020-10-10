@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
       title: "計算脳トレ",
       home: HomeScreen(),
       theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
