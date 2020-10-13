@@ -6,6 +6,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  List<DropdownMenuItem<int>> _menuItems = List();
+
+  @override
+  void initState() {
+    super.initState();
+    setMenuItems();
+  }
+
+  void setMenuItems(){
+    _menuItems.add(DropdownMenuItem(value: 10, child: Text(10.toString()),));
+    _menuItems.add(DropdownMenuItem(value: 20, child: Text(20.toString()),));
+    _menuItems.add(DropdownMenuItem(value: 30, child: Text(30.toString()),));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 16.0,),
                 Text("問題数を選択して「スタート」を押してください"),
                 SizedBox(height: 50.0,),
-                DropdownButton(),
+                DropdownButton(
+                  items: [
+
+                  ]
+                ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.bottomCenter,
