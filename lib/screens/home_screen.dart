@@ -21,8 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     alignment: Alignment.bottomCenter,
                     padding: EdgeInsets.only(bottom: 10.0),
-                    child: RaisedButton(
-                      child: Text("スタート"),
+                    child: RaisedButton.icon(
+                      color: Colors.blue,
+                      onPressed: () => print("ボタン押した"),
+                      label: Text("スタート"),
+                      icon: Icon(Icons.skip_next),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))
+                      )
                     ),
                   ),
                 )
