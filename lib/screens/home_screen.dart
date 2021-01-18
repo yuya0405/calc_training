@@ -8,6 +8,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   List<DropdownMenuItem<int>> _menuItems = List();
+  int _number;
 
   @override
   void initState() {
@@ -15,11 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
     setMenuItems();
   }
 
-  void setMenuItems(){
-    _menuItems.add(DropdownMenuItem(value: 10, child: Text(10.toString()),));
-    _menuItems.add(DropdownMenuItem(value: 20, child: Text(20.toString()),));
-    _menuItems.add(DropdownMenuItem(value: 30, child: Text(30.toString()),));
-  }
+  void setMenuItems() {
+    _menuItems
+    ..add(DropdownMenuItem(value: 10, child: Text(10.toString()),))
+    ..add(DropdownMenuItem(value: 20, child: Text(20.toString()),))
+    ..add(DropdownMenuItem(value: 30, child: Text(30.toString()),));
 
   @override
   Widget build(BuildContext context) {
