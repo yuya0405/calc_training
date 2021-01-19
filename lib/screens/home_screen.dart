@@ -8,19 +8,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   List<DropdownMenuItem<int>> _menuItems = List();
-  int _number;
+  int _numberOfQuestions = 0;
 
   @override
   void initState() {
     super.initState();
     setMenuItems();
+    _numberOfQuestions = _menuItems[0].value;
   }
 
   void setMenuItems() {
+    // Cascade Notationを利用してadd
     _menuItems
-    ..add(DropdownMenuItem(value: 10, child: Text(10.toString()),))
-    ..add(DropdownMenuItem(value: 20, child: Text(20.toString()),))
-    ..add(DropdownMenuItem(value: 30, child: Text(30.toString()),));
+      ..add(DropdownMenuItem(value: 10, child: Text(10.toString()),))
+      ..add(DropdownMenuItem(value: 20, child: Text(20.toString()),))
+      ..add(DropdownMenuItem(value: 30, child: Text(30.toString()),));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text("問題数を選択して「スタート」を押してください"),
                 SizedBox(height: 50.0,),
                 DropdownButton(
-                  items: [
-
-                  ]
+                  items: _menuItems,
+                  value: _numberOfQuestions,
+                  onChanged: (value) => print(value.toString())
                 ),
                 Expanded(
                   child: Container(
