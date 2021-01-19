@@ -41,7 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 DropdownButton(
                   items: _menuItems,
                   value: _numberOfQuestions,
-                  onChanged: (value) => print(value.toString())
+                  onChanged: (selectedValue){
+                    setState(() {
+                      _numberOfQuestions = selectedValue;
+                    });
+                  }
                 ),
                 Expanded(
                   child: Container(
