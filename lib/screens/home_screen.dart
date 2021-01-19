@@ -1,3 +1,4 @@
+import 'package:calc_training/screens/testScreen.dart';
 import "package:flutter/material.dart";
 
 class HomeScreen extends StatefulWidget {
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.only(bottom: 10.0),
                     child: RaisedButton.icon(
                       color: Colors.blue,
-                      onPressed: () => print("ボタン押した"),
+                      onPressed: () => startTestScreen(context),
                       label: Text("スタート"),
                       icon: Icon(Icons.skip_next),
                       shape: RoundedRectangleBorder(
@@ -69,4 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  startTestScreen(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => TestScreen()));
+  }
+
 }
