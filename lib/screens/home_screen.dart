@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Image.asset("assets/images/image_title.png"),
                 SizedBox(height: 16.0,),
-                Text("問題数を選択して「スタート」を押してください"),
+                const Text("問題数を選択して「スタート」を押してください"),
                 SizedBox(height: 50.0,),
                 DropdownButton(
                   items: _menuItems,
