@@ -24,19 +24,19 @@ class _TestScreenState extends State<TestScreen> {
     return SafeArea(
       child: Scaffold(
           body: Column(
-        children: [
-          //スコア表示部分
-          _scorePart(),
-          //問題表示部分
-          _questionPart(),
-          //電卓ボタン部分
-          _calcButtons(),
-          //答え合わせボタン
-          _answerCheckButton(),
-          //戻るボタン
-          _backButton(),
-        ],
-      )),
+            children: [
+              //スコア表示部分
+              _scorePart(),
+              //問題表示部分
+              _questionPart(),
+              //電卓ボタン部分
+              _calcButtons(),
+              //答え合わせボタン
+              _answerCheckButton(),
+              //戻るボタン
+              _backButton(),
+            ],
+          )),
     );
   }
 
@@ -48,36 +48,36 @@ class _TestScreenState extends State<TestScreen> {
         TableRow(children: [
           Center(
               child: Text(
-            "残り問題数",
-            style: TextStyle(fontSize: 10.0),
-          )),
+                "残り問題数",
+                style: TextStyle(fontSize: 10.0),
+              )),
           Center(
               child: Text(
-            "正解数",
-            style: TextStyle(fontSize: 10.0),
-          )),
+                "正解数",
+                style: TextStyle(fontSize: 10.0),
+              )),
           Center(
               child: Text(
-            "正答率",
-            style: TextStyle(fontSize: 10.0),
-          )),
+                "正答率",
+                style: TextStyle(fontSize: 10.0),
+              )),
         ]),
         TableRow(children: [
           Center(
               child: Text(
-            numberOfRemaining.toString(),
-            style: TextStyle(fontSize: 18.0),
-          )),
+                numberOfRemaining.toString(),
+                style: TextStyle(fontSize: 18.0),
+              )),
           Center(
               child: Text(
-            numberOfCorrect.toString(),
-            style: TextStyle(fontSize: 18.0),
-          )),
+                numberOfCorrect.toString(),
+                style: TextStyle(fontSize: 18.0),
+              )),
           Center(
               child: Text(
-            correctRate.toString(),
-            style: TextStyle(fontSize: 18.0),
-          )),
+                correctRate.toString(),
+                style: TextStyle(fontSize: 18.0),
+              )),
         ]),
       ]),
     );
@@ -123,7 +123,8 @@ class _TestScreenState extends State<TestScreen> {
               )),
           Expanded(
             flex: 3,
-            child: Center(child: Text(answerString, style: TextStyle(fontSize: 60.0))),
+            child: Center(
+                child: Text(answerString, style: TextStyle(fontSize: 60.0))),
           )
         ],
       ),
@@ -137,7 +138,17 @@ class _TestScreenState extends State<TestScreen> {
 
   //答え合わせボタン
   Widget _answerCheckButton() {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      child: SizedBox(
+        width: double.infinity,
+        child: RaisedButton(
+            color: Colors.brown,
+            onPressed: null,
+            child: Text("答え合わせ", style: TextStyle(fontSize: 14.0),),
+        ),
+      ),
+    );
   }
 
   //戻るボタン
