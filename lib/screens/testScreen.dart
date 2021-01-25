@@ -153,6 +153,15 @@ class _TestScreenState extends State<TestScreen> {
 
   //戻るボタン
   Widget _backButton() {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      child: SizedBox(
+        width: double.infinity,
+        child: RaisedButton(
+            onPressed: null,
+            child: Text("戻る", style: TextStyle(fontSize: 14.0),),
+        ),
+      ),
+    );
   }
 }
