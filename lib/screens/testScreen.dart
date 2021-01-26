@@ -133,7 +133,54 @@ class _TestScreenState extends State<TestScreen> {
 
   //電卓ボタン部分
   Widget _calcButtons() {
-    return Container();
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+        child: Table(
+          children: [
+            TableRow(
+              children: [
+                _calcButton("7"),
+                _calcButton("8"),
+                _calcButton("9"),
+              ]
+            ),
+            TableRow(
+              children: [
+                _calcButton("4"),
+                _calcButton("5"),
+                _calcButton("6"),
+              ]
+            ),
+            TableRow(
+              children: [
+                _calcButton("3"),
+                _calcButton("2"),
+                _calcButton("1"),
+              ]
+            ),
+            TableRow(
+              children: [
+                _calcButton("0"),
+                _calcButton("-"),
+                _calcButton("C"),
+              ]
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _calcButton(String numString) {
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: RaisedButton(
+        color: Colors.brown,
+          onPressed: () => print(numString),
+          child: Text(numString, style: TextStyle(fontSize: 24.0),),
+      ),
+    );
   }
 
   //答え合わせボタン
