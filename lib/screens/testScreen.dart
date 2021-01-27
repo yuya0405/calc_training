@@ -23,18 +23,25 @@ class _TestScreenState extends State<TestScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Column(
+          body: Stack(
             children: [
-              //スコア表示部分
-              _scorePart(),
-              //問題表示部分
-              _questionPart(),
-              //電卓ボタン部分
-              _calcButtons(),
-              //答え合わせボタン
-              _answerCheckButton(),
-              //戻るボタン
-              _backButton(),
+              Column(
+                children: [
+                  //スコア表示部分
+                  _scorePart(),
+                  //問題表示部分
+                  _questionPart(),
+                  //電卓ボタン部分
+                  _calcButtons(),
+                  //答え合わせボタン
+                  _answerCheckButton(),
+                  //戻るボタン
+                  _backButton(),
+                ],
+              ),
+              _correctIncorrectImage(),
+              //テスト終了メッセージ
+              _endMessage(),
             ],
           )),
     );
@@ -210,5 +217,13 @@ class _TestScreenState extends State<TestScreen> {
         ),
       ),
     );
+  }
+
+  Widget _correctIncorrectImage() {
+    return Center(child: Image.asset("assets/images/pic_correct.png"));
+  }
+
+  Widget _endMessage() {
+    return Center(child: Text("テスト終了", style: TextStyle(fontSize: 60.0)));
   }
 }
