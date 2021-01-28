@@ -20,6 +20,19 @@ class _TestScreenState extends State<TestScreen> {
   String answerString = "";
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    numberOfCorrect = 0;
+    correctRate = 0;
+    numberOfRemaining = widget.numberOfQuestions;
+
+    //TODO 効果音の準備
+
+    setQuestion();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -226,4 +239,7 @@ class _TestScreenState extends State<TestScreen> {
   Widget _endMessage() {
     return Center(child: Text("テスト終了", style: TextStyle(fontSize: 60.0)));
   }
+
+  //TODO 問題文を出す
+  void setQuestion() {}
 }
