@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:soundpool/soundpool.dart';
 
 class TestScreen extends StatefulWidget {
   final numberOfQuestions;
@@ -19,6 +23,11 @@ class _TestScreenState extends State<TestScreen> {
   String operator = "";
   String answerString = "";
 
+  Soundpool soundpool;
+
+  int soundIdCorrect = 0;
+  int soundIdInCorrect = 0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -28,8 +37,32 @@ class _TestScreenState extends State<TestScreen> {
     numberOfRemaining = widget.numberOfQuestions;
 
     //TODO 効果音の準備
+    initSounds();
 
     setQuestion();
+    }
+
+  void initSounds() async{
+    try {
+      soundpool = Soundpool();
+      soundIdCorrect = await loadSound("assets/sounds/sound_correct.mp3");
+      soundIdInCorrect = await loadSound("assets/sounds/sound_incorrect.mp3");
+      setState(() {
+      });
+    } on IOException catch(error){
+      print("エラーの内容は：$error");
+    }
+  }
+
+  Future<int> loadSound(String soundPath) {
+    return rootBundle.load(soundPath).then((value) => soundpool.load(value));
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    soundpool.release();
   }
 
   @override
