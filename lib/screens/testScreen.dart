@@ -24,9 +24,14 @@ class _TestScreenState extends State<TestScreen> {
   String answerString = "";
 
   Soundpool soundpool;
-
   int soundIdCorrect = 0;
   int soundIdInCorrect = 0;
+
+  bool isCalcButtonsEnabled = false;
+  bool isAnswerCheckButtonEnabled = false;
+  bool isBackButtonEnabled = false;
+  bool isCorrectInCorrectImageEnabled = false;
+  bool isEndMessageEnabled = false;
 
   @override
   void initState() {
@@ -266,13 +271,28 @@ class _TestScreenState extends State<TestScreen> {
   }
 
   Widget _correctIncorrectImage() {
-    return Center(child: Image.asset("assets/images/pic_correct.png"));
+    if (isCorrectInCorrectImageEnabled == true) {
+      return Center(child: Image.asset("assets/images/pic_correct.png"));
+    } else {
+      return Container();
+    }
   }
 
   Widget _endMessage() {
-    return Center(child: Text("テスト終了", style: TextStyle(fontSize: 60.0)));
+    if (isEndMessageEnabled) {
+      return Center(child: Text("テスト終了", style: TextStyle(fontSize: 60.0)));
+    } else{
+      return Container();
+    }
   }
 
   //TODO 問題文を出す
-  void setQuestion() {}
+  void setQuestion() {
+    isCalcButtonsEnabled = true;
+    isAnswerCheckButtonEnabled = true;
+    isBackButtonEnabled = false;
+    isCorrectInCorrectImageEnabled = false;
+    isEndMessageEnabled = false;
+
+  }
 }
