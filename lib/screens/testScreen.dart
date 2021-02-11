@@ -236,7 +236,7 @@ class _TestScreenState extends State<TestScreen> {
       padding: const EdgeInsets.all(2.0),
       child: RaisedButton(
         color: Colors.brown,
-          onPressed: () => inputAnswer(numString),
+          onPressed: isCalcButtonsEnabled ? () => inputAnswer(numString) : null,
           child: Text(numString, style: TextStyle(fontSize: 24.0),),
       ),
     );
@@ -250,7 +250,7 @@ class _TestScreenState extends State<TestScreen> {
         width: double.infinity,
         child: RaisedButton(
             color: Colors.brown,
-            onPressed: null,
+            onPressed: isCalcButtonsEnabled ? () => answerCheck() : null,
             child: Text("答え合わせ", style: TextStyle(fontSize: 14.0),),
         ),
       ),
@@ -287,7 +287,7 @@ class _TestScreenState extends State<TestScreen> {
     }
   }
 
-  //TODO 問題文を出す
+  //問題文を出す
   void setQuestion() {
     isCalcButtonsEnabled = true;
     isAnswerCheckButtonEnabled = true;
@@ -330,6 +330,21 @@ class _TestScreenState extends State<TestScreen> {
         return;
       }
       answerString = answerString + numString;
+    });
+  }
+
+  answerCheck() {
+    if (answerString == "" || answerString == "-") {
+      return;
+    }
+    isCalcButtonsEnabled = false;
+    isAnswerCheckButtonEnabled = false;
+    isBackButtonEnabled = false;
+    isCorrectInCorrectImageEnabled = true;
+    isEndMessageEnabled = false;
+
+    setState(() {
+
     });
   }
 }
