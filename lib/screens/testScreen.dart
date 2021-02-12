@@ -33,6 +33,7 @@ class _TestScreenState extends State<TestScreen> {
   bool isBackButtonEnabled = false;
   bool isCorrectInCorrectImageEnabled = false;
   bool isEndMessageEnabled = false;
+  bool isCorrect = false;
 
   @override
   void initState() {
@@ -273,7 +274,11 @@ class _TestScreenState extends State<TestScreen> {
 
   Widget _correctIncorrectImage() {
     if (isCorrectInCorrectImageEnabled == true) {
-      return Center(child: Image.asset("assets/images/pic_correct.png"));
+      if (isCorrect){
+        return Center(child: Image.asset("assets/images/pic_correct.png"));
+      }
+      return Center(child: Image.asset("assets/images/pic_incorrect.png"));
+
     } else {
       return Container();
     }
@@ -342,6 +347,26 @@ class _TestScreenState extends State<TestScreen> {
     isBackButtonEnabled = false;
     isCorrectInCorrectImageEnabled = true;
     isEndMessageEnabled = false;
+
+    numberOfRemaining -= 1;
+
+    var myAnswer = int.parse(answerString).toInt();
+
+    var realAnswer = 0;
+    if (operator == "+"){
+      realAnswer = questionLeft + questionRight;
+    } else {
+      realAnswer = questionLeft - questionRight;
+    }
+
+    if (myAnswer == realAnswer){
+      isCorrect = true;
+      soundpool.play(soundIdCorrect);
+      numberOfCorrect += 1;
+    } else {
+      isCorrect = false;
+      soundpool.play(soundIdInCorrect);
+    }
 
     setState(() {
 
