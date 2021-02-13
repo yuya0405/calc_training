@@ -370,6 +370,18 @@ class _TestScreenState extends State<TestScreen> {
 
     correctRate = ((numberOfCorrect / (widget.numberOfQuestions - numberOfRemaining)) * 100).toInt();
 
+    if (numberOfRemaining == 0){
+      // 残り問題数がない
+      isCalcButtonsEnabled = false;
+      isAnswerCheckButtonEnabled = false;
+      isBackButtonEnabled = true;
+      isCorrectInCorrectImageEnabled = true;
+      isEndMessageEnabled = true;
+
+    } else {
+      // TODO 残り問題数がある
+    }
+
     setState(() {
 
     });
