@@ -368,6 +368,8 @@ class _TestScreenState extends State<TestScreen> {
       soundpool.play(soundIdInCorrect);
     }
 
+    correctRate = ((numberOfCorrect / (widget.numberOfQuestions - numberOfRemaining)) * 100).toInt();
+
     setState(() {
 
     });
