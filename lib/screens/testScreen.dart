@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
@@ -299,6 +300,7 @@ class _TestScreenState extends State<TestScreen> {
     isBackButtonEnabled = false;
     isCorrectInCorrectImageEnabled = false;
     isEndMessageEnabled = false;
+    answerString = "";
 
     Random random = Random();
     questionLeft = random.nextInt(100) + 1;
@@ -379,7 +381,8 @@ class _TestScreenState extends State<TestScreen> {
       isEndMessageEnabled = true;
 
     } else {
-      // TODO 残り問題数がある
+      // 残り問題数がある
+      Timer(Duration(seconds: 1), () => setQuestion());
     }
 
     setState(() {
