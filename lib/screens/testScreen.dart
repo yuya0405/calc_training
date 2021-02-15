@@ -266,7 +266,7 @@ class _TestScreenState extends State<TestScreen> {
       child: SizedBox(
         width: double.infinity,
         child: RaisedButton(
-            onPressed: null,
+            onPressed: isBackButtonEnabled ? () => closeTestScreen() : null,
             child: Text("戻る", style: TextStyle(fontSize: 14.0),),
         ),
       ),
@@ -388,5 +388,9 @@ class _TestScreenState extends State<TestScreen> {
     setState(() {
 
     });
+  }
+
+  closeTestScreen() {
+    Navigator.pop(context);
   }
 }
